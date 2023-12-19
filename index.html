@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El pollo loco</title>
+    <link rel="icon" type="image/x-icon" href="img/3_enemies_chicken/chicken_small/1_walk/1_w.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="models/drawable-object.class.js"></script>
+    <script src="models/movable-object-class.js"></script>
+    <script src="models/world.class.js"></script>
+    <script src="models/character.class.js"></script>
+    <script src="models/chicken.class.js"></script>
+    <script src="models/cloud.class.js"></script>
+    <script src="models/status-bar.class.js"></script>
+    <script src="models/status-bar-coin.class.js"></script>
+    <script src="models/status-bar-bottle.class.js"></script>
+    <script src="models/status-bar-endboss.class.js"></script>
+    <script src="models/bottle.class.js"></script>
+    <script src="models/coin.class.js"></script>
+    <script src="models/background-object.class.js"></script>
+    <script src="models/keyboard.class.js"></script>
+    <script src="models/level.class.js"></script>
+    <script src="models/endboss.class.js"></script>
+    <script src="models/throwable-object.class.js"></script>
+    <script src="levels/level1.js"></script>
+    <script src="js/game.js"></script>
+    <script src="models/sounds.class.js"></script>
+
+</head>
+
+<body>
+    <div id="rotateScreen" class="rotate-Screen-cont d-none">
+        <div><img src="./img/icons_reload3.png" alt="">
+            <span>Please rotate your Device</span>
+        </div>
+    </div>
+    <h1 id="headline">El pollo loco</h1>
+    <div class="content" id="fullScreen"><canvas id="canvas" width="720px" height="480px">
+        </canvas>
+
+        <div id="startScreen"><img class="pics" src="img/9_intro_outro_screens/start/startscreen_1.png" alt=""></div>
+        <div id="endScreenLose"><img class="pics" src="img/9_intro_outro_screens/game_over/oh no you lost!.png" alt="">
+            <button id="restartGameLose" onclick="restartGame()">Restart Game</button>
+        </div>
+        <div id="endScreenGameOver"><img class="pics" src="img/9_intro_outro_screens/game_over/game over!.png" alt="">
+            <button id="restartGameWin" onclick="restartGame()">Restart Game</button>
+        </div>
+
+        <div id="actionButtonLeft" class="left-cont">
+            <div class="action-btn">
+                <div id="btnLeft"><img src="./img/btn_left.png"></div>
+                <div id="btnRight"><img src="./img/btn_right.png"></div>
+            </div>
+        </div>
+        <div id="actionButtonRight" class="right-cont">
+            <div class="action-btn">
+                <div id="btnJump"><img src="./img/btn_jump.png"></div>
+                <div id="btnThrow"><img src="./img/btn_throw.png"></div>
+            </div>
+        </div>
+        <button id="startGame" onclick="startGame(); init()">Start Game</button>
+        <div id="controls" class="d-none pics">
+            <div class="controls-cont">
+                <span>Controls:</span>
+                <div class="controls-cont-line">
+                    <div class="line">
+                        <div class="btn-key">
+                            <</div><span>=</span>
+                        </div> <span>Left</span>
+                    </div>
+                    <div class="controls-cont-line">
+                        <div class="line">
+                            <div class="btn-key">></div><span>=</span>
+                        </div> <span>Right</span>
+                    </div>
+                    <div class="controls-cont-line">
+                        <div class="line">
+                            <div class="btn-key">Space</div><span>=</span>
+                        </div> <span>Jump</span>
+                    </div>
+                    <div class="controls-cont-line">
+                        <div class="line">
+                            <div class="btn-key">D</div><span>=</span>
+                        </div> <span>Throw</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="icons-cont">
+                <div id="controlsImage"><img onclick="showControls()" class="icons" src="./img/icons_settings.png"
+                        alt=""></div>
+                <div id="btnSoundOnOff"><img onclick="world.toggleSoundOff()" class="icons"
+                        src="./img/icons_sound_on.png" alt=""></div>
+            </div>
+            <div id="gamePause"><img onclick="initiatePause()" class="icons" src="./img/icons_pause.png" alt=""></div>
+            <div id="btn-fullScreen"><img class="icons" onclick="fullScreen()" src="./img/icons_fullscreen.png" alt="">
+            </div>
+        </div>
+
+</body>
+<script>
+    function fullScreen() {
+        let fullscreen = document.getElementById('fullScreen');
+        let canavs = document.getElementById('canvas')
+        enterFullscreen(canvas);
+    }
+
+    function enterFullscreen(element) {
+        if (element.requestFullscreen) {
+            element.requestFullscreen();
+        } else if (element.msRequestFullscreen) {  // for IE11 
+            element.msRequestFullscreen();
+        } else if (element.webkitRequestFullscreen) {   // for iOS Safari
+            element.webkitRequestFullscreen();
+        }
+    }
+</script>
+
+</html>
